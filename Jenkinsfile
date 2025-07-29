@@ -8,19 +8,14 @@ pipeline {
                     url : 'https://github.com/MollangPiu/jenkins.git'
             }
         }
-        stage('test') {
+        stage('Deploy to Server') {
             steps {
-                echo 'test stage'
-            }
-        }
-        stage('build') {
-            steps {
-                echo 'build stage'
-            }
-        }
-        stage('docker build') {
-            steps {
-                echo 'docker build stage'
+                sshagent(['spring-ssh-key']) {
+                    sh '''
+                        scp target/myapp.jar vagrant@192.168.56.100:/home/vagrant/
+                        ssh vagrant@192.168.56.100 "pkill -f java || true && nohup java -jar /home/vagrant/myapp.jar &"
+                    '''
+                }
             }
         }
     }

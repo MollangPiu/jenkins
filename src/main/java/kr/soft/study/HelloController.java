@@ -16,6 +16,7 @@ public class HelloController {
         System.out.println("Test123");
         System.out.println("Test456");
         System.out.println("Test789");
+        System.out.println("Test123");
         return "test.html";
     }
 }
