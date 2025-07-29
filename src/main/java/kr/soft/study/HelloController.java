@@ -14,6 +14,7 @@ public class HelloController {
     @GetMapping("/test")
     public String test() {
         System.out.println("Test123");
+        System.out.println("Test456");
         return "test.html";
     }
 }
