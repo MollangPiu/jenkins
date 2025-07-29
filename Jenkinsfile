@@ -9,6 +9,16 @@ pipeline {
             }
         }
 
+        stage('Trigger Approval') {
+            steps {
+                script {
+                    sshagent(['spring-ssh-key']) {
+                        sh 'echo hello'
+                    }
+                }
+            }
+        }
+
         stage('Deploy to Server') {
             steps {
                 script {
