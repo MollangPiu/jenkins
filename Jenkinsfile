@@ -1,11 +1,11 @@
 pipeline {
     agent any
     stages {
-        stage('Test') {
+        stage('Check SSH') {
             steps {
                 script {
-                    sshagent(['your-credential-id']) {
-                        sh 'echo Hello'
+                    sshagent(['dummy-key']) {
+                        sh 'echo Hello SSH'
                     }
                 }
             }
