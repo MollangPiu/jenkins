@@ -13,7 +13,7 @@ public class HelloController {
 
     @GetMapping("/test")
     public String test() {
-        System.out.println("Test456");
+        System.out.println("PRO");
         return "test.html";
     }
 }
