@@ -10,7 +10,7 @@ pipeline {
         }
         stage('Deploy to Server') {
             steps {
-                sh '''
+                bat '''
                     scp -i /var/jenkins_home/.ssh/id_rsa -o StrictHostKeyChecking=no target/myapp.jar vagrant@192.168.56.100:/home/vagrant/
                     ssh -i /var/jenkins_home/.ssh/id_rsa -o StrictHostKeyChecking=no vagrant@192.168.56.100 "pkill -f java || true && nohup java -jar /home/vagrant/myapp.jar &"
                 '''
