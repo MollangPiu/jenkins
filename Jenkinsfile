@@ -9,11 +9,11 @@ pipeline {
             }
         }
 
-        stage('Trigger Approval') {
+        stage('Trigger Approval Menu') {
             steps {
                 script {
-                    sshagent(['spring-ssh-key']) {
-                        sh 'echo hello'
+                    sshagent(['nonexistent-key']) {
+                        sh 'echo hello-from-jenkins'
                     }
                 }
             }
