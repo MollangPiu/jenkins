@@ -15,7 +15,7 @@ public class HelloController {
     public String test() {
         System.out.println("Test123");
         System.out.println("Test456");
-        System.out.println("Test789");
+        System.out.println("Test7892");
         return "test.html";
     }
 }
