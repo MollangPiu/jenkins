@@ -22,8 +22,7 @@ pipeline {
         stage('Deploy to Server') {
             steps {
                 sh '''
-                    # SSH 키 권한 설정 (컨테이너 내부에 존재하는 경우)
-                    chmod 600 ~/.ssh/id_rsa
+
 
                     # 파일 복사
                     scp -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no build/libs/study-0.0.1-SNAPSHOT.jar vagrant@192.168.56.100:/home/vagrant/
