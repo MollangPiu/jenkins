@@ -12,16 +12,19 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'gradlew.bat clean build'
+                sh '''
+                    chmod +x ./gradlew
+                    ./gradlew clean build
+                '''
             }
         }
 
         stage('Deploy to Server') {
             steps {
                 sh '''
-                    scp -i C:/.ssh/id_rsa -o StrictHostKeyChecking=no build\\libs\\study-0.0.1-SNAPSHOT.jar vagrant@192.168.56.100:/home/vagrant/
+                    scp -i /var/jenkins_home/.ssh/id_rsa -o StrictHostKeyChecking=no build/libs/study-0.0.1-SNAPSHOT.jar vagrant@192.168.56.100:/home/vagrant/
 
-                    ssh -i C:/.ssh/id_rsa -o StrictHostKeyChecking=no vagrant@192.168.56.100 "echo 'nohup java -jar /home/vagrant/study-0.0.1-SNAPSHOT.jar > /home/vagrant/nohup.out 2>&1 &' > /home/vagrant/run.sh && chmod +x /home/vagrant/run.sh && /home/vagrant/run.sh"
+                    ssh -i /var/jenkins_home/.ssh/id_rsa -o StrictHostKeyChecking=no vagrant@192.168.56.100 "echo 'nohup java -jar /home/vagrant/study-0.0.1-SNAPSHOT.jar > /home/vagrant/nohup.out 2>&1 &' > /home/vagrant/run.sh && chmod +x /home/vagrant/run.sh && /home/vagrant/run.sh"
                 '''
             }
         }
