@@ -14,7 +14,7 @@ public class HelloController {
     @GetMapping("/test")
     public String test() {
 
-        System.out.println("test하기11");
+        System.out.println("test하기");
 
         return "test.html";
     }

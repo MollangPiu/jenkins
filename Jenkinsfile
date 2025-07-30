@@ -23,7 +23,6 @@ pipeline {
             steps {
                 sh '''
 
-
                     # 파일 복사
                     scp -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no build/libs/study-0.0.1-SNAPSHOT.jar vagrant@192.168.56.100:/home/vagrant/
 
