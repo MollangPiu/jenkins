@@ -11,9 +11,11 @@ pipeline {
         }
 
         stage('Build') {
-            // Windows라면 bat, Linux라면 sh
             steps {
-                sh './gradlew clean build'
+                sh '''
+                    chmod +x ./gradlew
+                    ./gradlew clean build
+                '''
             }
         }
 
